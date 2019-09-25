@@ -9,12 +9,18 @@ interface Props {
 }
 
 const burger: React.FC<Props> = (props) => {
-  const transformedIngredients = Object.keys(props.ingredients)
+  let transformedIngredients = Object.keys(props.ingredients)
     .map((igKey: string) => {
       return [...Array(props.ingredients[igKey])].map(( i => {
         return <BurgerIngredient key={igKey+i} type={igKey} />
       }))
     })
+    .reduce((arr, el) => {
+      return arr.concat(el)
+    }, [])
+  if (transformedIngredients.length === 0) {
+    transformedIngredients[0] = <p>Please start adding ingredients!</p>
+  }
   return (
     <div className={classes.Burger}>
       <BurgerIngredient type='bread-top' />
