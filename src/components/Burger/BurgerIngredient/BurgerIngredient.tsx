@@ -10,8 +10,7 @@ class BurgerIngredient extends Component<Props, State> {
   state = {}
 
   render() {
-    let propType;
-    let ingredient = null
+    let ingredient: any = null
     switch (this.props.type) {
       case ('bread-bottom'):
         ingredient = <div className={classes.BreadBottom}></div>
@@ -40,11 +39,7 @@ class BurgerIngredient extends Component<Props, State> {
         ingredient = null
         break;
     }
-    return (
-      <div>
-
-      </div>
-    )
+    return ingredient
   }
 }
 
